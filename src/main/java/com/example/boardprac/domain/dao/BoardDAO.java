@@ -1,0 +1,46 @@
+package com.example.boardprac.domain.dao;
+
+import com.example.boardprac.domain.vo.BoardVO;
+import com.example.boardprac.mapper.BoardMapper;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+// RDB에 가깝던 mapper 인터페이스를
+// 객체에 가깝게 변경시켜주는 역할
+@RequiredArgsConstructor
+public class BoardDAO {
+    private final BoardMapper boardMapper;
+
+    // 게시글 목록
+    public List<BoardVO> getList(){
+        return boardMapper.getList();
+    };
+
+    // 게시글 추가
+    public void register(BoardVO boardVO){
+        boardMapper.insert(boardVO);
+    };
+
+    // 게시글 하나 가져오기
+    public BoardVO findByBoardNumber(Long boardNumber){
+        return boardMapper.select(boardNumber);
+    };
+
+    // 게시글 수정
+    public boolean modify(BoardVO boardVO){
+        return boardMapper.update(boardVO) == 1;
+    };
+
+    // 게시글 삭제
+    public boolean remove(Long boardNumber){
+        return boardMapper.delete(boardNumber) == 1;
+    };
+
+    // 게시글 전체 개수
+    public int getTotal(){
+        return boardMapper.getTotal();
+    };
+}
