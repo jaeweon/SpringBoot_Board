@@ -3,6 +3,8 @@ package com.example.boardprac.service;
 import com.example.boardprac.domain.dao.BoardDAO;
 import com.example.boardprac.domain.vo.BoardVO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,8 +12,10 @@ import java.util.List;
 // 여러 개의 DML을 하나의 서비스로 묶어준다.
 @Service
 @RequiredArgsConstructor
+@Qualifier("board") @Primary
 public class BoardServiceImpl implements BoardService{
     private final BoardDAO boardDAO;
+
     @Override
     public List<BoardVO> getList() {
         return boardDAO.getList();
