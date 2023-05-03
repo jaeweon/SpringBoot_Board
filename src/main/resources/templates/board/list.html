@@ -1,13 +1,57 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Board</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="/css/main.css" type="text/css"/>
 </head>
-<body>
-<h1 th:text="${board_title}"></h1>
+<body class="is-preload">
+<!-- Main -->
+<div id="main">
+    <div class="wrapper">
+        <div class="inner">
+
+            <!-- Elements -->
+            <header class="major">
+                <h1>Board</h1>
+                <p>게시판 목록</p>
+            </header>
+            <!-- Table -->
+            <h3><a href="/board/register" class="button small">글 등록</a></h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                    <tr class="tHead">
+                        <th class="boardNumber">번호</th>
+                        <th class="boardTitle">제목</th>
+                        <th class="boardWriter">작성자</th>
+                        <th class="boardRegisterDate">작성일</th>
+                        <th class="boardUpdateDate">수정일</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tBody">
+                            <td class="boardNumber"></td>
+                            <td class="boardTitle"><a id="goRead"></a></td>
+                            <td class="boardWriter"></td>
+                            <td class="boardRegisterDate"></td>
+                            <td class="boardUpdateDate"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
+<!-- Scripts -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.dropotron.min.js"></script>
+<script src="/js/browser.min.js"></script>
+<script src="/js/breakpoints.min.js"></script>
+<script src="/js/util.js"></script>
+<script src="/js/main.js"></script>
 </html>

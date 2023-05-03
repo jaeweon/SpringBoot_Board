@@ -2,6 +2,7 @@ package com.example.boardprac.controller;
 
 import com.example.boardprac.domain.vo.BoardVO;
 import com.example.boardprac.service.BoardService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -19,15 +20,16 @@ import org.springframework.web.servlet.view.RedirectView;
 public class BoardController {
     /*
     *       Task        URL              METHOD      PARAMETE          FORM        URL이동
+    *
     *       전체목록   /board/list          GET         없음             없음
-    *       등록      /board/register      POST       모든 항목          필요
+    *       등록      /board/register      POST       모든 항목          필요       /board/list
     *       조회      /board/read          GET        boardNumber       없음
-    *       삭제      /board/remove        GET        boardNumber       없음
-    *       수정      /board/modify        POST       모든 항목          필요
+    *       삭제      /board/remove        GET        boardNumber       없음       /board/list
+    *       수정      /board/modify        POST       모든 항목          필요       /board/read
     */
     private final BoardService boardService;
 
-    @GetMapping("/list")
+    @GetMapping("list")
     public String getList(Model model){
         log.info("-----------------");
         log.info("list------------");
@@ -36,7 +38,10 @@ public class BoardController {
         return "/board/list";
     }
 
-    @PostMapping("/register")
+    @GetMapping("register")
+    public void register(){}
+
+    @PostMapping("register")
     // 매개변수에 선언된 객체는 자동으로 화면에 전달되므로,
     // 이를 막기 위해서는 redirect 방식의 전송이 필요하다.
     // 쉽게말해, 굳이 전달할 필요가 없는 건 Redirect로 없애주자;
@@ -56,8 +61,9 @@ public class BoardController {
     }
 
     // 게시글 상세보기
-    @GetMapping("read")
-    public void read(Long boardNumber, Model model){
+    @GetMapping({"read", "modify"})
+    public void read(Long boardNumber, Model model, HttpServletRequest req){
+        log.info(req.getRequestURI() + "-----------" + boardNumber);
         model.addAttribute("board", boardService.get(boardNumber));
     }
 
@@ -80,8 +86,4 @@ public class BoardController {
             boardService.remove(boardNumber);
             return getList(model);
     }
-
-
-
-
 }
