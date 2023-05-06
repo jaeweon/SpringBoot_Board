@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Netflix</title>
+  <style>
+    body{
+      margin: 0;
+    }
+
+    section{
+      background-image: url("/images/icon1.jpg");
+      width:1680px;
+      height:650px;
+    }
+
+    img.logo{
+      position: absolute;
+      left:19px;
+      width: 147px;
+      height: 45px;
+      top:11px;
+    }
+
+    div.login{
+      position:relative;
+      background-color : black;
+      position: absolute;
+      left:699px;
+      top:66px;
+      color:white;
+      width: 300px;
+      height: 458px;
+      opacity: 0.8;
+
+    }
+
+
+    #input1{
+      position:absolute;
+      background:#333333;
+      width: 200px;
+      height: 28px;
+      left:40px;
+      top:90px;
+      border-radius: 4.5px;
+      border-bottom-color: #e87c03;
+      border-right-style: none;
+    }
+    #input2{
+      position:absolute;
+      background:#333333;
+      width: 200px;
+      height: 29px;
+      left:40px;
+      top:149px;
+      border-radius: 4.5px;
+      border-bottom-color: #e87c03;
+      border-right-style: none;
+
+    }
+    .login-white{
+      position:absolute;
+      font-size: 22px;
+      left:40px;
+      top:40px;
+    }
+
+    .login-org1{
+      position:absolute;
+      color: #e87c03;
+      font-size: 1px;
+      left:40px;
+      top:124px;
+    }
+
+    .login-org2{
+      position:absolute;
+      color: #e87c03;
+      font-size: 1px;
+      left:40px;
+      top:184px;
+
+    }
+    .login-red{
+      position: absolute;
+      background: #e50914;
+      left:40px;
+      top:213px;
+      width: 208px;
+      height: 39px;
+      text-align: center;
+      border-radius: 4.5px;
+
+    }
+
+    #checkbox-1{
+      position:absolute;
+      width: 150px;
+      height: 18px;
+      left:40px;
+      top:235px;
+      border-color: #737373;
+    }
+
+    label{
+      position:absolute;
+      font-size: 1px;
+      top:3.5px;
+      color:#B3B3B3;
+    }
+
+    .login-help{
+      position:absolute;
+      width: 150px;
+      height: 18px;
+      left:151px;
+      top:254px;
+      color:#B3B3B3;
+      font-size: 1px;
+    }
+
+    img{
+      position:absolute;
+      width: 15px;
+      height: 15px;
+      left:40px;
+      top:310px
+    }
+
+    .login-facebook{
+      position:absolute;
+      width: 150px;
+      height: 18px;
+      left:62px;
+      top:310px;
+      color:#B3B3B3;
+      font-size: 1px;
+    }
+
+    .login-net{
+      position:absolute;
+      width: 150px;
+      height: 18px;
+      left:40px;
+      top:341px;
+      color:#B3B3B3;
+      font-size: 1px;
+
+    }
+    .login-net1{
+      position:absolute;
+      width: 150px;
+      height: 18px;
+      left:158px;
+      top:338px;
+      color:#FFFFFF;
+      font-size: 12px;
+
+    }
+    .login-last1{
+      position:absolute;
+      width: 250px;
+      height: 18px;
+      left:40px;
+      top:371px;
+      color:#B3B3B3;
+      font-size: 1px;
+
+    }
+    .login-last2{
+      position:absolute;
+      width: 250px;
+      height: 18px;
+      left:40px;
+      top:384px;
+      color:#B3B3B3;
+      font-size: 1px;
+
+    }
+    .login-last3{
+      position:absolute;
+      width: 150px;
+      height: 18px;
+      left:207px;
+      top:384px;
+      color:#0071EB;
+      font-size: 1px;
+
+    }
+
+    .last-word{
+      background-color : black;
+      position: absolute;
+      left:0;
+      top:560px;
+      color:white;
+      width: 1680px;
+      height: 175px;
+    }
+    .last-word2{
+      background-color : black;
+      position: absolute;
+      left:0;
+      top:560px;
+      color:white;
+      width: 1680px;
+      height: 350px;
+    }
+
+    .tell-num{
+      position:absolute;
+      width: 300px;
+      height: 18px;
+      left:520px;
+      top:7px;
+      color:#757575;
+      font-size: 13px;
+    }
+
+    .tell-1{
+      position:absolute;
+      width: 250px;
+      height: 18px;
+      left:520px;
+      top:33px;
+      color:#757575;
+      font-size: 11px;
+    }
+    .tell-2{
+      position:absolute;
+      width: 250px;
+      height: 18px;
+      left:680px;
+      top:33px;
+      color:#757575;
+      font-size: 11px;
+    }
+    .tell-3{
+      position:absolute;
+      width: 250px;
+      height: 18px;
+      left:820px;
+      top:33px;
+      color:#757575;
+      font-size: 11px;
+    }
+    .tell-4{
+      position:absolute;
+      width: 250px;
+      height: 18px;
+      left:980px;
+      top:33px;
+      color:#757575;
+      font-size: 11px;
+    }
+    .tell-5{
+      position:absolute;
+      width: 250px;
+      height: 18px;
+      left:520px;
+      top:56px;
+      color:#757575;
+      font-size: 11px;
+    }
+    .tell-6{
+      position:absolute;
+      width: 250px;
+      height: 18px;
+      left:680px;
+      top:56px;
+      color:#757575;
+      font-size: 11px;
+    }
+
+    .l1{
+      position:absolute;
+      width: 500px;
+      height: 18px;
+      left:520px;
+      top:82px;
+      color:#808080;
+      font-size: 1px;
+    }
+    .l2{
+      position:absolute;
+      width: 500px;
+      height: 18px;
+      left:520px;
+      top:95px;
+      color:#808080;
+      font-size: 1px;
+    }
+    .l3{
+      position:absolute;
+      width: 500px;
+      height: 18px;
+      left:520px;
+      top:107px;
+      color:#808080;
+      font-size: 1px;
+    }
+    .l4{
+      position:absolute;
+      width: 500px;
+      height: 18px;
+      left:520px;
+      top:119px;
+      color:#808080;
+      font-size: 1px;
+    }
+    .l5{
+      position:absolute;
+      width: 500px;
+      height: 18px;
+      left:520px;
+      top:131px;
+      color:#808080;
+      font-size: 1px;
+    }
+    .l6{
+      position:absolute;
+      width: 500px;
+      height: 18px;
+      left:520px;
+      top:145px;
+      color:#808080;
+      font-size: 1px;
+    }
+    .l7{
+      position:absolute;
+      width: 500px;
+      height: 18px;
+      left:520px;
+      top:157px;
+      color:#808080;
+      font-size: 1px;
+    }
+
+  </style>
+</head>
+<body>
+
+<section>
+  <img class="logo" src="/images/img4.png">
+  <div class="login">
+    <div class="login-white"><strong>로그인</strong></div>
+    <div class="login-org1">정환한 이메일 주소나 전화번호를 입력하세요.</div>
+    <div class="login-org2">비밀번호는 4~60자 사이여야 합니다.</div>
+    <div class="login-red">로그인</div>
+    <div class="login-help">도움이 필요하신가요?</div>
+    <div class="login-facebook">Facebook으로 로그인</div>
+    <div class="login-net">Netflix 회원이 아닌가요?</div>
+    <div class="login-net1"><strong>지금 가입하세요</strong></div>
+    <div class="login-last1">이 페이지는 Google reCAPTCHA의 보호를 받아</div>
+    <div class="login-last2">사용자가 로봇이 아님을 확인합니다.</div>
+    <div class="login-last3"><strong>자세히 알아보기</strong></div>
+
+    <form>
+      <input id="input1" type="text" placeholder="이메일  주소 또는 전화번호">
+      <input id="input2" type="password" placeholder="비밀번호">
+      <p id="checkbox-1">
+        <input type="checkbox" id="checkbox-a">
+<!--        <label for="label-a">로그인 정보 저장</label>-->
+      </p>
+    </form>
+    <img src="/images/img5.png">
+  </div>
+</section>
+
+<div class="last-word">
+  <div class="tell-num">질문이 있으신가요? 문의전화: 080-001-9587</div>
+  <div class="tell-1">자주 묻는 질문</div>
+  <div class="tell-2">고객센터</div>
+  <div class="tell-3">이용약관</div>
+  <div class="tell-4">개인정보</div>
+  <div class="tell-5">쿠키 설정</div>
+  <div class="tell-6">회사정보</div>
+  <div class="l1">넷플릭스서비시스코리아 유한회사 통신판매업신고번호: 제2018-서울종로-0426호 전화번호: 080-001-9587</div>
+  <div class="l2">대표: 레지널드 숀 톰프슨</div>
+  <div class="l3">이메일 주소: korea@netflix.com</div>
+  <div class="l4">주소: 대한민국 서울특별시 종로구 우정국로 26, 센트로폴리스 A동 20층 우편번호 03161</div>
+  <div class="l5">사업자등록번호: 165-87-00119</div>
+  <div class="l6">클라우드 호스팅: Amazon Web Services Inc.</div>
+  <div class="l7">공정거래위원회 웹사이트</div>
+</div>
+</body>
+</html>

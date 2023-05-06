@@ -81,7 +81,7 @@ public class BoardController {
     }
 
 
-    @GetMapping("remove")
+    @PostMapping("remove")
     public String remove(Long boardNumber, Model model){
             boardService.remove(boardNumber);
             return getList(model);
