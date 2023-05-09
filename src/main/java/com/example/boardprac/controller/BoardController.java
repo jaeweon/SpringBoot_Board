@@ -1,6 +1,7 @@
 package com.example.boardprac.controller;
 
 import com.example.boardprac.domain.vo.BoardVO;
+import com.example.boardprac.domain.vo.TestVO;
 import com.example.boardprac.service.BoardService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -85,5 +86,21 @@ public class BoardController {
     public String remove(Long boardNumber, Model model){
             boardService.remove(boardNumber);
             return getList(model);
+    }
+
+
+    @GetMapping("login")
+    public void login(){}
+
+    @PostMapping("login")
+    public String login(TestVO testVO, Model model){
+        if(testVO.getId().equals("admin")){
+            model.addAttribute("id", testVO.getId());
+            return "/board/admin";
+        }if (testVO.getId().equals("user")){
+            model.addAttribute("id", testVO.getId());
+            return "/board/user";
+        }
+        return "error";
     }
 }
