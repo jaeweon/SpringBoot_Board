@@ -3,7 +3,7 @@
 <mapper namespace="com.example.boardprac.mapper.BoardMapper">
     <select id="getList" resultType="boardVO">
    <![CDATA[
-        SELECT RN, BOARD_NUMBER, BOARD_TITLE, BOARD_CONTENT, BOARD_WRITER, BOARD_REGISTER_DATE, BOARD_UPDATE_DATE
+        SELECT BOARD_NUMBER, BOARD_TITLE, BOARD_CONTENT, BOARD_WRITER, BOARD_REGISTER_DATE, BOARD_UPDATE_DATE
         FROM
         (
         SELECT /** INDEX_DESC(TBL_NOTICE_BOARD PK_BOARD)*/

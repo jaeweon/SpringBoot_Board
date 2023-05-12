@@ -1,6 +1,8 @@
 package com.example.boardprac.controller;
 
 import com.example.boardprac.domain.vo.BoardVO;
+import com.example.boardprac.domain.vo.Criteria;
+import com.example.boardprac.domain.vo.PageDTO;
 import com.example.boardprac.domain.vo.TestVO;
 import com.example.boardprac.service.BoardService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -31,11 +33,12 @@ public class BoardController {
     private final BoardService boardService;
 
     @GetMapping("list")
-    public String getList(Model model){
+    public String getList(Model model, Criteria criteria){
         log.info("-----------------");
         log.info("list------------");
         log.info("-----------------");
-        model.addAttribute("boardList", boardService.getList());
+        model.addAttribute("boardList", boardService.getList(criteria));
+        model.addAttribute("pageDTO", new PageDTO(criteria, boardService.getTotal()));
         return "/board/list";
     }
 
@@ -83,9 +86,9 @@ public class BoardController {
 
 
     @PostMapping("remove")
-    public String remove(Long boardNumber, Model model){
+    public String remove(Long boardNumber, Model model, Criteria criteria){
             boardService.remove(boardNumber);
-            return getList(model);
+            return getList(model, criteria);
     }
 
 

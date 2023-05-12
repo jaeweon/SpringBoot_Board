@@ -1,6 +1,7 @@
 package com.example.boardprac.mapper;
 
 import com.example.boardprac.domain.vo.BoardVO;
+import com.example.boardprac.domain.vo.Criteria;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +13,10 @@ public class BoardMapperTests {
     @Autowired
     private BoardMapper boardMapper;
 
-//    @Test       게시글 목록 test
-//    public void getListTest(){
-//        boardMapper.getList().stream().map(BoardVO::toString).forEach(log::info);
-//    }
+    @Test      // 게시글 목록 test
+    public void getListTest(){
+        boardMapper.getList(new Criteria()).stream().map(BoardVO::toString).forEach(log::info);
+    }
 
 
 //        @Test        // 게시글 등록 test
@@ -42,10 +43,10 @@ public class BoardMapperTests {
 //        }
 
 
-        @Test       //  게시글 삭제 test
-       public void deleteTest(){
-            boardMapper.delete(2L);
-        }
+//        @Test       //  게시글 삭제 test
+//       public void deleteTest(){
+//            boardMapper.delete(2L);
+//        }
 
 
 //        @Test         // 게시글 총 개수 test

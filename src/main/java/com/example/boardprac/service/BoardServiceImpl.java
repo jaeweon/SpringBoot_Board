@@ -2,6 +2,7 @@ package com.example.boardprac.service;
 
 import com.example.boardprac.domain.dao.BoardDAO;
 import com.example.boardprac.domain.vo.BoardVO;
+import com.example.boardprac.domain.vo.Criteria;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
@@ -17,8 +18,8 @@ public class BoardServiceImpl implements BoardService{
     private final BoardDAO boardDAO;
 
     @Override
-    public List<BoardVO> getList() {
-        return boardDAO.getList();
+    public List<BoardVO> getList(Criteria criteria) {
+        return boardDAO.getList(criteria);
     }
 
     @Override

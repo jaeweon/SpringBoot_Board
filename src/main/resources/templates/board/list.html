@@ -44,6 +44,18 @@
                     </th:block>
                     </tbody>
                 </table>
+                <div style="text-align: center">
+                    <a class="changePage" th:if="${pageDTO.prev}" th:href="${pageDTO.startPage - 1}"><code>&lt;</code></a>
+                    <th:block th:each="num:${#numbers.sequence(pageDTO.startPage, pageDTO.endPage)}">
+                        <code th:text="${num}" th:if="${pageDTO.criteria.pageNum == num}"></code>
+                        <a class="changePage" th:unless="${pageDTO.criteria.pageNum == num}" th:href="${num}"><code th:text="${num}"></code></a>
+                    </th:block>
+                    <a class="changePage" th:if="${pageDTO.next}" th:href="${pageDTO.endPage + 1}"><code>&gt;</code></a>
+                </div>
+                <form action="/board/list" th:object="${criteria}" name="pageForm">
+                    <input type="hidden" th:field="*{pageNum}">
+                    <input type="hidden" th:field="*{amount}">
+                </form>
             </div>
         </div>
     </div>
@@ -58,8 +70,15 @@
 <script src="/js/main.js"></script>
 <script th:inline="javascript">
     let boardNumber = [[${boardNumber}]];
+    let $pageForm = $(pageForm);
+
     if(boardNumber != null){
         alert(boardNumber + "번 게시글이 등록되었습니다.")
     }
+    $("a.changePage").on("click", function (e){
+        e.preventDefault();
+        $pageForm.find("input[name='pageNum']").val($(this).attr("href"));
+        $pageForm.submit();
+    })
 </script>
 </html>
