@@ -13,5 +13,5 @@ public interface BoardService {
     public BoardVO get(Long boardNumber);
     public boolean modify(BoardVO boardVO);
     public boolean remove(Long boardNumber);
-    public int getTotal();
+    public int getTotal(Criteria criteria);
 }

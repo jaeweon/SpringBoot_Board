@@ -38,7 +38,7 @@ public class BoardController {
         log.info("list------------");
         log.info("-----------------");
         model.addAttribute("boardList", boardService.getList(criteria));
-        model.addAttribute("pageDTO", new PageDTO(criteria, boardService.getTotal()));
+        model.addAttribute("pageDTO", new PageDTO(criteria, boardService.getTotal(criteria)));
         return "/board/list";
     }
 

@@ -7,6 +7,43 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="/css/main.css" type="text/css"/>
+    <style>
+        .small-width {display: none;}
+        .big-width {display: block;}
+        div#searchWrap {
+            text-align: center;
+            display: flex;
+        }
+        select{
+            width:30%;
+        }
+        #keyword{
+            width:60%;
+        }
+        form#searchForm {
+            overflow: hidden;
+        }
+
+        @media(max-width: 918px){
+            .boardRegisterDate {display: none;}
+            .boardUpdateDate {display: none;}
+            .small-width {display: block;}
+            .big-width {display: none;}
+            div.small-width {display: block;}
+            div.big-width {display: none;}
+
+            div#searchWrap { display: block;}
+            select{
+                width:100%;
+            }
+            #keyword{
+                width:100%;
+            }
+            .search{
+                width:100%;
+            }
+        }
+    </style>
 </head>
 <body class="is-preload">
 <!-- Main -->
@@ -44,13 +81,40 @@
                     </th:block>
                     </tbody>
                 </table>
-                <div style="text-align: center">
+                <form method="get" action="/board/list" id="searchForm" th:object="${pageDTO}">
+                    <div class="fields">
+                        <div class="field">
+                            <div id="searchWrap" th:object="${criteria}">
+                                <select name="type">
+                                    <option value="">검색 기준</option>
+                                    <option value="T">제목</option>
+                                    <option value="C" >내용</option>
+                                    <option value="W">작성자</option>
+                                    <option value="TC">제목 또는 내용</option>
+                                    <option value="TW">제목 또는 작성자</option>
+                                    <option value="TCW">제목 또는 내용 또는 작성자</option>
+                                </select>
+                                <input id="keyword" type="text"/>
+                                <a href="#" class="search button primary icon solid fa-search">검색</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="big-width" style="text-align: center">
                     <a class="changePage" th:if="${pageDTO.prev}" th:href="${pageDTO.startPage - 1}"><code>&lt;</code></a>
                     <th:block th:each="num:${#numbers.sequence(pageDTO.startPage, pageDTO.endPage)}">
                         <code th:text="${num}" th:if="${pageDTO.criteria.pageNum == num}"></code>
                         <a class="changePage" th:unless="${pageDTO.criteria.pageNum == num}" th:href="${num}"><code th:text="${num}"></code></a>
                     </th:block>
                     <a class="changePage" th:if="${pageDTO.next}" th:href="${pageDTO.endPage + 1}"><code>&gt;</code></a>
+                </div>
+                <!--이전 버튼 <code> 현재 페이지 </code> 다음 버튼-->
+                <!--이전 버튼 : 현재 페이지 - 1-->
+                <!--다음 버튼 : 현재 페이지 + 1-->
+                <div class="small-width" style="text-align: center" th:object="${pageDTO}">
+                    <a class="changePage" th:if="*{criteria.pageNum > 1}" th:href="${criteria.pageNum - 1}"><code>&lt;</code></a>
+                        <code th:text="${criteria.pageNum}"></code>
+                    <a class="changePage" th:if="*{criteria.pageNum < realEnd}" th:href="${criteria.pageNum + 1}"><code>&gt;</code></a>
                 </div>
                 <form action="/board/list" th:object="${criteria}" name="pageForm">
                     <input type="hidden" th:field="*{pageNum}">
@@ -71,14 +135,38 @@
 <script th:inline="javascript">
     let boardNumber = [[${boardNumber}]];
     let $pageForm = $(pageForm);
+    let $searchForm = $(searchForm);
+    let params = [[${pageDTO.criteria.listLink}]];
+
+    $("a#goRead").on("click", function(e){
+        e.preventDefault();
+        location.href = "/board/read" + params + "&boardNumber=" + $(this).attr("href");
+    })
+
+    $("#searchForm a").on("click", function(e){
+        e.preventDefault();
+
+        if(!$searchForm.find("option:selected").val()){
+            alert("검색종류를 선택하세요");
+            return false;
+        }
+
+        if(!$searchForm.find("input[name='keyword']").val()){
+            alert("키워드를 입력하세요");
+            return false;
+        }
+
+        $searchForm.submit();
+    });
 
     if(boardNumber != null){
-        alert(boardNumber + "번 게시글이 등록되었습니다.")
+        alert(boardNumber + "번 게시글이 등록되었습니다.");
     }
-    $("a.changePage").on("click", function (e){
+
+    $("a.changePage").on("click", function(e){
         e.preventDefault();
         $pageForm.find("input[name='pageNum']").val($(this).attr("href"));
         $pageForm.submit();
-    })
+    });
 </script>
 </html>

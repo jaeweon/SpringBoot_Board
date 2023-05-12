@@ -41,7 +41,7 @@ public class BoardDAO {
     };
 
     // 게시글 전체 개수
-    public int getTotal(){
-        return boardMapper.getTotal();
+    public int getTotal(Criteria criteria){
+        return boardMapper.getTotal(criteria);
     };
 }
