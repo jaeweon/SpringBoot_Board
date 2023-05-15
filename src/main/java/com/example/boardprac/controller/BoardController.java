@@ -61,6 +61,7 @@ public class BoardController {
         // rttr.addAttribute("boardNumber", boardVO.getBoardNumber());
 
         // redirect로 쏴주면 해당 컨트롤러를 방문했다가 간다.
+        // 방금 등록한 게시글을 포함한 목록을 보여주기 위해서(컨트롤러를 방문 했다가 가야해서), redirect로 해준다
         return new RedirectView("/board/list");
     }
 
