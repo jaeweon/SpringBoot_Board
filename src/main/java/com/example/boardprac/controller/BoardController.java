@@ -67,7 +67,7 @@ public class BoardController {
 
     // 게시글 상세보기
     @GetMapping({"read", "modify"})
-    public void read(Long boardNumber, Model model, HttpServletRequest req){
+    public void read(Long boardNumber, Criteria criteria, Model model, HttpServletRequest req){
         log.info(req.getRequestURI() + "-----------" + boardNumber);
         model.addAttribute("board", boardService.get(boardNumber));
     }
@@ -76,12 +76,15 @@ public class BoardController {
 
     // 수정
     @PostMapping("modify")
-    public RedirectView modify(BoardVO boardVO, RedirectAttributes rttr){
+    public RedirectView modify(BoardVO boardVO, RedirectAttributes rttr, Criteria criteria){
         boardService.modify(boardVO);
         // 컨트롤러에서 다른 컨트롤러의 매개변수로 파라미터를 전달할 때에는
         // addAttribute( ), 쿼리스트링 방식으로 전달해야 받을 수 있다.
         // Flash방식은 최종 응답 화면에서 사용될 파라미터를 전달할 때에만 사용하도록 한다.
         rttr.addAttribute("boardNumber", boardVO.getBoardNumber());
+        // 객체를 화면에 전달할 때에는 Flash 사용
+        rttr.addFlashAttribute("criteria", criteria);
+        log.info("----------criteria : " + criteria);
         return new RedirectView("/board/read");
     }
 

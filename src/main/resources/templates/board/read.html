@@ -18,7 +18,7 @@
                 <p>게시글 상세보기</p>
             </header>
             <!-- Table -->
-            <h3><a href="/board/list" class="button small">목록 보기</a></h3>
+            <h3><a id="goList" class="button small">목록 보기</a></h3>
             <div class="content">
                 <div class="form">
                     <form action="/board/remove" method="post">
@@ -62,12 +62,18 @@
 <script src="/js/main.js"></script>
 <script th:inline="javascript">
     let boardNumber = [[${board.boardNumber}]];
+    let params = [[${criteria.listLink}]];
     function goUpdate(){
-        location.href = "/board/modify?boardNumber=" + boardNumber;
+        location.href = "/board/modify" + params + "&boardNumber=" + boardNumber;
     }
 
     function goDelete(){
         alert(boardNumber +"번 게시글이 삭제 되었습니다.")
     }
+
+    $('a#goList').click(function (e){
+        e.preventDefault();
+        location.href = "/board/list" + params;
+    })
 </script>
 </html>
