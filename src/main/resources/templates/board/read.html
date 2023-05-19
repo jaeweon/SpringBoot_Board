@@ -7,6 +7,14 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="/css/main.css" />
+<style>
+    .line{
+        border-bottom: 1px solid #ff8b77;
+    }
+    .replies li {
+        list-style: none;
+    }
+</style>
 <body class="is-preload">
 <!-- Main -->
 <div id="main">
@@ -46,6 +54,28 @@
                                 <input type="submit" class="button" value="삭제" onclick="goDelete()"/>
                             </li>
                         </ul>
+                        <ul class="icons">
+                            <li style="display: block">
+                                <span class="icon solid fa-envelope"></span>
+                                <strong>댓글</strong>
+                            </li>
+                        </ul>
+                        <a href="javascript:void(0)" class="register button primary small" style="width: 100%">댓글 등록</a>
+                        <div style="display: none" class="register-form">
+                            <div>
+                                <h4>작성자</h4>
+                                <input type="text" name="replyWriter" placeholder="Replier">
+                            </div>
+                            <div>
+                                <h4>댓글</h4>
+                                <textarea rows="6" name="replyContent" placeholder="Reply" style="resize: none"></textarea>
+                            </div>
+                            <div style="text-align: right">
+                                <a href="javascript:void(0)" class="finish button primary small">등록</a>
+                                <a href="javascript:void(0)" class="cancel button primary small">취소</a>
+                            </div>
+                        </div>
+                        <ul class="replies"></ul>
                     </form>
                 </div>
             </div>
@@ -64,6 +94,49 @@
 <script th:inline="javascript">
     let boardNumber = [[${board.boardNumber}]];
     let params = [[${criteria.listLink}]];
+    const $replyUL = $(".replies");
+    let pageNum = 1;
+
+    showList(pageNum);
+
+    function showList(page){
+        replyService.getList({
+            boardNumber : boardNumber,
+            page: page
+        }, function (list){
+            let str ="";
+            if(list == null || list.length == 0){
+                $replyUL.html("<p>등록된 댓글이 없습니다.</p>");
+                return;
+            }
+
+            $.each(list, function (i, reply){
+                str += "<li>";
+                str += "<strong>" + reply.replyWriter + "</strong>";
+                str += "<p>" + reply.replyContent + "</p>";
+                str += "<div className='line'></div>";
+                str += "</li>";
+            });
+            $replyUL.html(str);
+        });
+    }
+
+    <li style="display: block">
+        <strong>유저 002</strong>
+        <p>댓글 내용</p>
+        <div className="line"></div>
+    </li>
+
+
+
+
+
+
+
+
+
+
+
     function goUpdate(){
         location.href = "/board/modify" + params + "&boardNumber=" + boardNumber;
     }
