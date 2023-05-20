@@ -72,15 +72,3 @@ public class ReplyController {
         replyService.modify(replyVO);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
