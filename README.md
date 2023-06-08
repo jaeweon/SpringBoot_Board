@@ -27,3 +27,18 @@ ROW ID 를 관리해주는 객체 : INDEX (JAVA에서의 INDEX와 전혀 다름)
 ORDER BY는 SELECT 다음에 실행되기 때문에, SQL문이 길어지기 때문에, 실행 속도가 느려지기 때문에 사용 X
 # HINT 문법 사용
 /** INDEX_DESC(TBL_BOARD PK_BOARD)*/
+
+# 게시글 페이징
+Criteria : 페이징 처리용 클래스
+pageNum : current page
+amount(10) : 한 페이지에 10개의 게시글 
+type : 검색 키워드
+keyword : 전체, 제목, 제목 또는 내용, 작성자
+
+pageCount
+startPage
+endPage
+realEnd
+prev
+next
+total
