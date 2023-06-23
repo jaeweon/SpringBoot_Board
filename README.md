@@ -43,7 +43,7 @@ prev
 next
 total
 
-# 게시글 댓글
+# 게시글 댓글(RESTFUL)
 ### 댓글 등록 : http://localhost:10003/reply/new
 #### {
 #### "boardNumber" : 292, 
