@@ -2,6 +2,9 @@
 #### 스프링부트로 REST FUL 하게 게시판 만들기!
 ##### 기능 : SELECT, INSERT, UPDATE, DELETE, REPLY, SEARCH
 ##### 목적 : Spring Frame Work을 활용해 REST API를 공부헤보자
+
+![image](https://github.com/jaeweon/SpringBoot_Board/assets/34277606/cf118726-aa14-409a-ad0d-248f5c090d4c)
+
 # Developer Tools
 ### Spring Boot DevTools
 ### Lombok
