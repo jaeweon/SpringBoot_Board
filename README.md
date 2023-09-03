@@ -22,7 +22,7 @@
 ### MyBatis Framework
 ### Oracle Driver
 
-# 게시글 정렬 (HINT)
+# 게시글 정렬 (HINT) DB 튜닝
 ## HINT를 사용해랴 하는 이유
 ### 오라클에서 눈에 보이지는 않지만 ROW ID(행) 라는 것이 존재한다. * 각 행의 주소
 ### ROW ID 를 관리해주는 객체 : INDEX (JAVA에서의 INDEX와 전혀 다름)
